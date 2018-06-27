@@ -37,6 +37,9 @@ class WeightedQuickUnionUF(object):
             self.store[q_root] = p_root
             self.sz[p_root] += self.sz[q_root]
 
+    def is_connected(self, p, q):
+        return self.find(p) == self.find(q)
+
 
 if __name__ == '__main__':
     wq_union = WeightedQuickUnionUF(11)
