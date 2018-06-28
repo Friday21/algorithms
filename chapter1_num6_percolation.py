@@ -78,7 +78,7 @@ class Percolation(object):
 
     def is_full(self, row, col):
         index = self.cal_index(row, col)
-        return self.site[index] == 0
+        return self.site[index] == 1 and self.union_find.is_connected(0, index)
 
     def num_of_open_site(self):
         return self.open_num
@@ -87,6 +87,11 @@ class Percolation(object):
         return self.union_find.is_connected(0, self.num * self.num + 1)
 
     def cal_index(self, row, col):
+        if not (0 < row <= self.num):
+            raise ValueError('row 应该大于零且小于等于n')
+
+        if not (0 < col <= self.num):
+            raise ValueError('col 应该大于零且小于等于n')
         return self.num * (row - 1) + col
 
     def random_open_until_percolate(self):
