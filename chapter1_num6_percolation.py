@@ -1,5 +1,5 @@
 """
-教程第一周作业:
+教程第一周作业: 提交的java版本在percolation.zip里
 http://coursera.cs.princeton.edu/algs4/assignments/percolation.html
 Write a program to estimate the value of the percolation threshold via Monte Carlo simulation.
 """
@@ -90,12 +90,10 @@ class Percolation(object):
         return self.num * (row - 1) + col
 
     def random_open_until_percolate(self):
-        while True:
+        while not self.is_percolate():
             row = random.randint(1, self.num)
             col = random.randint(1, self.num)
             self.open(row, col)
-            if self.is_percolate():
-                break
 
 
 class PercolationStats(object):
